@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bharadwaj Portfolio</title>
+</head>
+<body>
+  <h1>Bharadwaj Tadepalli Portfolio</h1>
+  <p>My website is coming soon 🚀</p>
+</body>
+</html>
