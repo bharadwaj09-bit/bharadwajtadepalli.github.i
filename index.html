@@ -1,10 +1,382 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Bharadwaj Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bharadwaj Tadepalli – Hyper AI Analytics Portfolio</title>
+  <meta name="description" content="Senior Business Analyst portfolio – SQL, Python, Power BI, Tableau, AWS, ML projects." />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root{
+      --neon:#38bdf8; /* lightning blue */
+      --neon2:#22d3ee;
+    }
+    html{ scroll-behavior:smooth; }
+
+    .glow { box-shadow: none; }
+    .neon { text-shadow: none; }
+    .glass {
+      backdrop-filter: blur(14px);
+      background: linear-gradient(180deg, rgba(2,6,23,.55), rgba(2,6,23,.85));
+    }
+    .ring-neon{ border:1px solid rgba(56,189,248,.35); }
+
+    /* Star field */
+    .stars, .stars2, .stars3{ position:absolute; inset:0; background-repeat:repeat; background-size: 320px 320px; opacity:.65; }
+    .stars{
+      background-image:
+        radial-gradient(1px 1px at 25px 35px, rgba(255,255,255,.9), transparent 40%),
+        radial-gradient(1px 1px at 90px 120px, rgba(255,255,255,.7), transparent 40%),
+        radial-gradient(1px 1px at 160px 70px, rgba(255,255,255,.8), transparent 40%),
+        radial-gradient(1px 1px at 210px 200px, rgba(255,255,255,.65), transparent 40%),
+        radial-gradient(1px 1px at 280px 40px, rgba(255,255,255,.75), transparent 40%);
+      animation: drift 120s linear infinite;
+    }
+    .stars2{
+      opacity:.45;
+      background-image:
+        radial-gradient(1px 1px at 60px 40px, rgba(56,189,248,.9), transparent 45%),
+        radial-gradient(1px 1px at 180px 150px, rgba(34,211,238,.85), transparent 45%),
+        radial-gradient(1px 1px at 240px 260px, rgba(56,189,248,.7), transparent 45%);
+      animation: drift 180s linear infinite;
+    }
+    .stars3{
+      opacity:.25;
+      background-image:
+        radial-gradient(2px 2px at 120px 220px, rgba(56,189,248,.55), transparent 50%),
+        radial-gradient(2px 2px at 260px 120px, rgba(34,211,238,.5), transparent 50%);
+      animation: drift 260s linear infinite;
+    }
+    @keyframes drift{ from{ transform: translateY(0px);} to{ transform: translateY(-600px);} }
+
+    /* Shiny icon chip */
+    .icon-chip{
+      display:inline-flex;
+      align-items:center;
+      gap:.55rem;
+      padding:.6rem .9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(56,189,248,.35);
+      background: rgba(2,6,23,.55);
+      box-shadow: 0 0 18px rgba(56,189,248,.18);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .icon-chip:hover{ transform: translateY(-1px); box-shadow: 0 0 26px rgba(56,189,248,.35); }
+
+    .hovercard{ transition: border-color .15s ease; }
+    .hovercard:hover{ border-color: rgba(56,189,248,.35); }
+
+    /* Shimmer removed for professional look */ 100%{ left:140%; } }
+
+    /* Skill bars */
+    .bar{ width:0%; }
+
+    /* Modal */
+    .modal-hidden{ display:none; }
+  </style>
 </head>
-<body>
-  <h1>Bharadwaj Tadepalli Portfolio</h1>
-  <p>My website is coming soon 🚀</p>
+
+<body class="text-slate-100 overflow-x-hidden" style="background: radial-gradient(1200px 600px at 20% -10%, rgba(56,189,248,.18), transparent 60%), radial-gradient(900px 500px at 90% 20%, rgba(34,211,238,.12), transparent 55%), #000;">
+
+<!-- Cosmic background -->
+<div class="fixed inset-0 -z-10" aria-hidden="true">
+  <div class="absolute inset-0 bg-gradient-to-b from-black via-slate-950 to-black"></div>
+  <div class="stars"></div>
+  <div class="stars2"></div>
+  <div class="stars3"></div>
+  <div class="absolute -top-48 -left-56 w-[520px] h-[520px] rounded-full blur-3xl opacity-30" style="background: radial-gradient(circle, rgba(56,189,248,.55), transparent 60%);"></div>
+  <div class="absolute top-28 -right-40 w-[620px] h-[620px] rounded-full blur-3xl opacity-25" style="background: radial-gradient(circle, rgba(34,211,238,.5), transparent 60%);"></div>
+</div>
+
+<!-- NAV -->
+<header class="max-w-7xl mx-auto px-6 pt-8">
+  <div class="glass ring-neon rounded-2xl px-5 py-4 flex flex-wrap items-center justify-between gap-4 glow shimmer">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-xl bg-cyan-500/15 ring-neon flex items-center justify-center"><i data-lucide="orbit" class="text-cyan-300"></i></div>
+      <div>
+        <p class="font-semibold leading-tight">Bharadwaj Tadepalli</p>
+        <p class="text-slate-400 text-sm">Senior Business Analyst</p>
+      </div>
+    </div>
+    <nav class="flex flex-wrap gap-3 text-sm">
+      <a class="icon-chip" href="#skills"><i data-lucide="zap"></i> Skills</a>
+      <a class="icon-chip" href="#projects"><i data-lucide="layers"></i> Projects</a>
+      <a class="icon-chip" href="#experience"><i data-lucide="briefcase"></i> Experience</a>
+      <a class="icon-chip" href="#insights"><i data-lucide="book-open"></i> Insights</a>
+      <a class="icon-chip" href="#contact"><i data-lucide="mail"></i> Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="relative max-w-7xl mx-auto px-6 py-20 grid lg:grid-cols-2 gap-12 items-center">
+  <div>
+    
+
+    <h1 class="mt-6 text-5xl md:text-6xl font-extrabold neon">Bharadwaj Tadepalli</h1>
+
+    <p class="mt-4 text-xl text-slate-200">Senior Business Analyst with 5+ years of experience driving data-driven decision-making across financial services and healthcare.</p>
+
+    <div class="mt-10 flex flex-wrap gap-4">
+      <a href="#projects" class="px-6 py-3 rounded-xl bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-semibold glow inline-flex items-center gap-2 shimmer"><i data-lucide="rocket"></i> View Projects</a>
+      <a href="/resume.pdf" target="_blank" class="px-6 py-3 rounded-xl border border-cyan-400/40 hover:bg-cyan-500/10 inline-flex items-center gap-2"><i data-lucide="download"></i> Download Resume</a>
+      
+    </div>
+
+    <div class="mt-6 flex flex-wrap gap-6 text-cyan-300">
+      <a href="https://github.com/bharadwaj09-bit" target="_blank" class="hover:text-cyan-200 inline-flex items-center gap-2"><i data-lucide="github"></i> GitHub</a>
+      <a href="https://www.linkedin.com/in/bharadwaj-tadepalli-74986524b/" target="_blank" class="hover:text-cyan-200 inline-flex items-center gap-2"><i data-lucide="linkedin"></i> LinkedIn</a>
+      <span class="inline-flex items-center gap-2 text-slate-300"><i data-lucide="map-pin"></i> Connecticut, USA</span>
+      <span class="inline-flex items-center gap-2 text-slate-300"><i data-lucide="phone"></i> +1 (203) 823-8532</span>
+      <a href="mailto:tadepalli.bharadwaj@gmail.com" class="inline-flex items-center gap-2 text-slate-300 hover:text-cyan-200"><i data-lucide="at-sign"></i> tadepalli.bharadwaj@gmail.com</a>
+    </div>
+  </div>
+
+  <div class="relative glass ring-neon rounded-3xl p-10 glow hovercard shimmer">
+    <h3 class="text-cyan-300 font-semibold text-lg mb-4 inline-flex items-center gap-2"><i data-lucide="radar"></i> Core Strengths</h3>
+    <div class="grid grid-cols-2 gap-4">
+      <div class="p-4 rounded-2xl bg-cyan-500/10 ring-neon text-cyan-200"><i data-lucide="shield"></i> Risk KPIs & Controls</div>
+      <div class="p-4 rounded-2xl bg-cyan-500/10 ring-neon text-cyan-200"><i data-lucide="database"></i> SQL Data Modeling</div>
+      <div class="p-4 rounded-2xl bg-cyan-500/10 ring-neon text-cyan-200"><i data-lucide="bar-chart-3"></i> BI Dashboards</div>
+      <div class="p-4 rounded-2xl bg-cyan-500/10 ring-neon text-cyan-200"><i data-lucide="workflow"></i> Automation & SOPs</div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS + METERS -->
+<section id="skills" class="max-w-7xl mx-auto px-6 py-20">
+  <div class="flex flex-wrap items-end justify-between gap-6">
+    <h2 class="text-3xl font-bold neon inline-flex items-center gap-3"><i data-lucide="zap"></i> Skills & Stack</h2>
+    <p class="text-slate-400">Animated skill meters (scroll to trigger)</p>
+  </div>
+
+  <div class="mt-10 grid lg:grid-cols-2 gap-8">
+    <div class="glass ring-neon rounded-2xl p-8 glow hovercard">
+      <h3 class="text-xl font-semibold text-cyan-300 inline-flex items-center gap-2"><i data-lucide="gauge"></i> Skill Meters</h3>
+
+      <div class="mt-6 space-y-5" id="skillMeters">
+        <div>
+          <div class="flex justify-between text-sm text-slate-300"><span>SQL</span><span>90%</span></div>
+          <div class="mt-2 h-2 rounded-full bg-slate-800 ring-neon overflow-hidden"><div class="bar h-full bg-cyan-400 glow" data-level="90"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm text-slate-300"><span>Power BI</span><span>85%</span></div>
+          <div class="mt-2 h-2 rounded-full bg-slate-800 ring-neon overflow-hidden"><div class="bar h-full bg-cyan-400 glow" data-level="85"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm text-slate-300"><span>Python</span><span>80%</span></div>
+          <div class="mt-2 h-2 rounded-full bg-slate-800 ring-neon overflow-hidden"><div class="bar h-full bg-cyan-400 glow" data-level="80"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm text-slate-300"><span>Tableau</span><span>75%</span></div>
+          <div class="mt-2 h-2 rounded-full bg-slate-800 ring-neon overflow-hidden"><div class="bar h-full bg-cyan-400 glow" data-level="75"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm text-slate-300"><span>AWS</span><span>65%</span></div>
+          <div class="mt-2 h-2 rounded-full bg-slate-800 ring-neon overflow-hidden"><div class="bar h-full bg-cyan-400 glow" data-level="65"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="glass ring-neon rounded-2xl p-6 hovercard glow"><p class="text-cyan-300 font-semibold mb-2 inline-flex items-center gap-2"><i data-lucide="cpu"></i> Data & ML</p><p class="text-slate-300">Pandas, NumPy, scikit-learn, Forecasting, Segmentation, A/B Testing, SHAP</p></div>
+      <div class="glass ring-neon rounded-2xl p-6 hovercard glow"><p class="text-cyan-300 font-semibold mb-2 inline-flex items-center gap-2"><i data-lucide="database"></i> Databases</p><p class="text-slate-300">Snowflake, BigQuery, MS SQL, Validation, ETL, Data Warehousing</p></div>
+      <div class="glass ring-neon rounded-2xl p-6 hovercard glow"><p class="text-cyan-300 font-semibold mb-2 inline-flex items-center gap-2"><i data-lucide="bar-chart-3"></i> BI</p><p class="text-slate-300">Interactive dashboards, KPI systems, DAX, executive reporting</p></div>
+      <div class="glass ring-neon rounded-2xl p-6 hovercard glow"><p class="text-cyan-300 font-semibold mb-2 inline-flex items-center gap-2"><i data-lucide="workflow"></i> Delivery</p><p class="text-slate-300">Agile, Jira, SOPs, testing, governance, stakeholder management</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS (clickable + thumbnails + case studies) -->
+<section id="projects" class="max-w-7xl mx-auto px-6 py-20">
+  <div class="flex flex-wrap items-end justify-between gap-6">
+    <h2 class="text-3xl font-bold neon inline-flex items-center gap-3"><i data-lucide="layers"></i> Featured Projects</h2>
+    <p class="text-slate-400">Click a card → GitHub | Click Case Study → details</p>
+  </div>
+
+  <div class="mt-10 grid lg:grid-cols-2 gap-8">
+
+    <div class="glass ring-neon rounded-2xl overflow-hidden glow hovercard">
+      <a href="https://github.com/bharadwaj09-bit/Credit_card_financial_dashboard" target="_blank" class="block">
+        <img src="/creditcard.png" onerror="this.style.display='none'" alt="Credit card dashboard preview" class="w-full h-52 object-cover opacity-90" />
+        <div class="p-8">
+          <div class="flex items-start justify-between gap-4">
+            <h3 class="text-2xl font-semibold inline-flex items-center gap-2"><i data-lucide="credit-card"></i> Credit Card Financial Dashboard</h3>
+            <span class="icon-chip"><i data-lucide="external-link"></i> GitHub</span>
+          </div>
+          <p class="mt-3 text-slate-300">Interactive Power BI dashboard analyzing transactions, spending trends, delinquency signals, and customer behavior for decision-making.</p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="icon-chip text-xs"><i data-lucide="database"></i> SQL</span>
+            <span class="icon-chip text-xs"><i data-lucide="bar-chart-3"></i> Power BI</span>
+            <span class="icon-chip text-xs"><i data-lucide="function-square"></i> DAX</span>
+            <span class="icon-chip text-xs"><i data-lucide="table"></i> Excel</span>
+          </div>
+        </div>
+      </a>
+      <div class="px-8 pb-8">
+        <a href="#case-credit" class="icon-chip glow"><i data-lucide="file-search"></i> Case Study</a>
+      </div>
+    </div>
+
+    <div class="glass ring-neon rounded-2xl overflow-hidden glow hovercard">
+      <a href="https://github.com/bharadwaj09-bit/End-To-End-Movie-Recommendation-System-TF-IDF-CosineSimilarity" target="_blank" class="block">
+        <img src="/movie.png" onerror="this.style.display='none'" alt="Movie recommendation preview" class="w-full h-52 object-cover opacity-90" />
+        <div class="p-8">
+          <div class="flex items-start justify-between gap-4">
+            <h3 class="text-2xl font-semibold inline-flex items-center gap-2"><i data-lucide="film"></i> Movie Recommendation System</h3>
+            <span class="icon-chip"><i data-lucide="external-link"></i> GitHub</span>
+          </div>
+          <p class="mt-3 text-slate-300">End-to-end content-based recommender using TF-IDF vectorization and cosine similarity to personalize movie discovery.</p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="icon-chip text-xs"><i data-lucide="cpu"></i> Python</span>
+            <span class="icon-chip text-xs"><i data-lucide="sigma"></i> TF-IDF</span>
+            <span class="icon-chip text-xs"><i data-lucide="scan"></i> Cosine Similarity</span>
+            <span class="icon-chip text-xs"><i data-lucide="sparkles"></i> SHAP</span>
+          </div>
+        </div>
+      </a>
+      <div class="px-8 pb-8">
+        <a href="#case-movie" class="icon-chip glow"><i data-lucide="file-search"></i> Case Study</a>
+      </div>
+    </div>
+
+  </div>
+  
+</section>
+
+<!-- CASE STUDIES -->
+<section class="max-w-7xl mx-auto px-6 py-20 grid lg:grid-cols-2 gap-8">
+  <div id="case-credit" class="glass ring-neon rounded-2xl p-8 glow hovercard">
+    <h3 class="text-2xl font-semibold neon inline-flex items-center gap-2"><i data-lucide="file-search"></i> Case Study: Credit Card Dashboard</h3>
+    <p class="mt-4 text-slate-300"><b>Goal:</b> Help stakeholders understand revenue, delinquency patterns, and customer behavior using interactive analytics.</p>
+    <p class="mt-2 text-slate-300"><b>Approach:</b> Built SQL data prep + DAX measures, designed clean KPI views, and automated refresh to minimize manual effort.</p>
+    <p class="mt-2 text-slate-300"><b>Outcome:</b> Reduced manual analysis time by <b>40%</b> and improved the speed of decision-making with segment-level insights.</p>
+    <a class="mt-6 inline-flex icon-chip glow" target="_blank" href="https://github.com/bharadwaj09-bit/Credit_card_financial_dashboard"><i data-lucide="external-link"></i> Open Repo</a>
+  </div>
+
+  <div id="case-movie" class="glass ring-neon rounded-2xl p-8 glow hovercard">
+    <h3 class="text-2xl font-semibold neon inline-flex items-center gap-2"><i data-lucide="file-search"></i> Case Study: Movie Recommender</h3>
+    <p class="mt-4 text-slate-300"><b>Goal:</b> Build a personalized recommendation system using metadata-driven similarity.</p>
+    <p class="mt-2 text-slate-300"><b>Approach:</b> TF-IDF vectorization + cosine similarity for ranking; feature engineering to improve relevance; SHAP for explainability.</p>
+    <p class="mt-2 text-slate-300"><b>Outcome:</b> Transparent, explainable recommendations with scalable retrieval for large catalogs.</p>
+    <a class="mt-6 inline-flex icon-chip glow" target="_blank" href="https://github.com/bharadwaj09-bit/End-To-End-Movie-Recommendation-System-TF-IDF-CosineSimilarity"><i data-lucide="external-link"></i> Open Repo</a>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="max-w-7xl mx-auto px-6 py-20">
+  <h2 class="text-3xl font-bold neon mb-10 inline-flex items-center gap-3"><i data-lucide="briefcase"></i> Experience</h2>
+
+  <div class="space-y-6">
+    <div class="glass ring-neon rounded-2xl p-8 glow hovercard shimmer">
+      <h3 class="text-2xl font-semibold">Credit Risk Data Analyst — Verinova Solutions (Sep 2025 – Present)</h3>
+      <p class="mt-3 text-slate-300">Own governance of credit-related metrics and analytics workflows, ensuring consistent KPI definitions, policy-aligned calculations, and strong documentation across reporting platforms.</p>
+      <p class="mt-2 text-slate-300">Run post-implementation testing and control reviews for analytics pipelines; resolve data quality gaps using standardized validations and SOPs to improve reporting reliability by <b>15%</b>.</p>
+    </div>
+
+    <div class="glass ring-neon rounded-2xl p-8 glow hovercard shimmer">
+      <h3 class="text-2xl font-semibold">Financial Data Analyst Intern — MetLife (Dec 2023 – Aug 2024)</h3>
+      <p class="mt-3 text-slate-300">Built and automated recurring operational and financial reports using SQL + Excel VBA, reducing reporting time by <b>30%</b> and improving reporting accuracy by <b>18%</b>.</p>
+      <p class="mt-2 text-slate-300">Designed Tableau dashboards for loss ratios, claims cycle time, and KPIs used in leadership reviews; strengthened validation checks to reduce reporting errors by <b>20%</b>.</p>
+    </div>
+
+    <div class="glass ring-neon rounded-2xl p-8 glow hovercard shimmer">
+      <h3 class="text-2xl font-semibold">Business Analyst — Tata Consultancy Services (Aug 2020 – Aug 2022)</h3>
+      <p class="mt-3 text-slate-300">Drove data-driven digital initiatives by analyzing customer journeys, funnel performance, and segmentation insights—improving operational decision-making effectiveness by <b>30%</b>.</p>
+      <p class="mt-2 text-slate-300">Built Power BI dashboards and predictive models to identify high-potential segments, improving campaign ROI by <b>10%</b> and engagement by <b>12%</b> through A/B testing and optimization.</p>
+    </div>
+
+    <div class="glass ring-neon rounded-2xl p-8 glow hovercard shimmer">
+      <h3 class="text-2xl font-semibold">Business Analyst — Sigma InfoTech (Jun 2018 – Jul 2020)</h3>
+      <p class="mt-3 text-slate-300">Mapped EHR and operational workflows, improving efficiency by <b>15%</b>. Built SQL/Excel dashboards to track wait time, throughput, and productivity—improving service efficiency by <b>10%</b>.</p>
+      <p class="mt-2 text-slate-300">Produced FRDs, SOPs, and training documentation to increase adoption by <b>25%</b> and reduce rework by <b>12%</b> through clear requirements and collaboration.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- EDUCATION & CERTS -->
+<section class="max-w-7xl mx-auto px-6 py-20 grid lg:grid-cols-2 gap-8">
+  <div class="glass ring-neon rounded-2xl p-8 glow hovercard">
+    <h3 class="text-2xl font-semibold mb-4 inline-flex items-center gap-2"><i data-lucide="graduation-cap"></i> Education</h3>
+    <p class="text-slate-300">Master’s in Data Analytics (GPA 3.9/4.0) — University of Mount Vernon Nazarene</p>
+    <p class="mt-2 text-slate-300">Master’s in Business Analytics (GPA 3.7/4.0) — University of New Haven</p>
+  </div>
+
+  <div class="glass ring-neon rounded-2xl p-8 glow hovercard">
+    <h3 class="text-2xl font-semibold mb-4 inline-flex items-center gap-2"><i data-lucide="badge-check"></i> Certifications</h3>
+    <ul class="space-y-2 text-slate-300">
+      <li class="inline-flex gap-2"><i data-lucide="check" class="text-cyan-300"></i> IBM Data Analyst Professional Certificate</li>
+      <li class="inline-flex gap-2"><i data-lucide="check" class="text-cyan-300"></i> Power BI Data Analyst Associate</li>
+      <li class="inline-flex gap-2"><i data-lucide="check" class="text-cyan-300"></i> Certified Business Analysis Professional (CBAP)</li>
+    </ul>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="max-w-7xl mx-auto px-6 pb-24 text-center">
+  <h2 class="text-3xl font-bold neon mb-4">Let’s Build Something Impactful</h2>
+  <p class="text-slate-300 mb-8">Open to Credit Risk Analytics, Data Analyst, Analytics Engineer, Business Intelligence roles</p>
+  <div class="flex flex-wrap justify-center gap-4">
+    <a class="icon-chip glow" href="mailto:tadepalli.bharadwaj@gmail.com"><i data-lucide="mail"></i> Email</a>
+    <a class="icon-chip glow" target="_blank" href="https://www.linkedin.com/in/bharadwaj-tadepalli-74986524b/"><i data-lucide="linkedin"></i> LinkedIn</a>
+    <a class="icon-chip glow" target="_blank" href="https://github.com/bharadwaj09-bit"><i data-lucide="github"></i> GitHub</a>
+    <a class="icon-chip glow" href="/resume.pdf"><i data-lucide="download"></i> Resume</a>
+  </div>
+</section>
+
+<footer class="text-center py-10 text-slate-500">© 2026 Bharadwaj Tadepalli • Hyper AI Theme</footer>
+
+<!-- Resume Modal -->
+<div id="resumeModal" class="fixed inset-0 z-50 modal-hidden">
+  <div class="absolute inset-0 bg-black/70"></div>
+  <div class="relative max-w-5xl mx-auto mt-10 bg-slate-950 ring-neon rounded-2xl overflow-hidden glow">
+    <div class="flex items-center justify-between px-4 py-3 border-b border-cyan-400/25">
+      <div class="inline-flex items-center gap-2 text-cyan-300"><i data-lucide="file-text"></i> Resume Preview</div>
+      <button id="closeResume" class="icon-chip"><i data-lucide="x"></i> Close</button>
+    </div>
+    <iframe src="/resume.pdf" title="Resume" class="w-full" style="height:80vh"></iframe>
+  </div>
+</div>
+
+<script>
+  lucide.createIcons();
+
+  // Resume modal
+  const modal = document.getElementById('resumeModal');
+  document.getElementById('openResume')?.addEventListener('click', () => {
+    modal.classList.remove('modal-hidden');
+  });
+  document.getElementById('closeResume')?.addEventListener('click', () => {
+    modal.classList.add('modal-hidden');
+  });
+  modal?.addEventListener('click', (e) => {
+    if(e.target === modal.firstElementChild) modal.classList.add('modal-hidden');
+  });
+
+  // Skill meter animation on scroll
+  const meters = document.getElementById('skillMeters');
+  const bars = Array.from(document.querySelectorAll('.bar'));
+  const animateBars = () => {
+    bars.forEach(b => {
+      const level = b.getAttribute('data-level') || '0';
+      b.style.transition = 'width 1200ms cubic-bezier(.2,.9,.2,1)';
+      b.style.width = level + '%';
+    });
+  };
+
+  if (meters) {
+    const io = new IntersectionObserver((entries) => {
+      if (entries.some(en => en.isIntersecting)) {
+        animateBars();
+        io.disconnect();
+      }
+    }, { threshold: 0.25 });
+    io.observe(meters);
+  }
+</script>
 </body>
 </html>
